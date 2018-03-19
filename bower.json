@@ -1,0 +1,22 @@
+{
+  "name": "whendidilast-vue",
+  "description": "When Did I Last... Vue.js",
+  "main": "",
+  "authors": [
+    "Risto Yrjänä <risto.yrjana@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.5.0",
+    "vaadin": "^10.0.0-beta2"
+  }
+}
