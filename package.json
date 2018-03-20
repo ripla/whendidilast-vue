@@ -12,8 +12,8 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
-    "postinstall": "npm run build"
-    },
+    "heroku-postbuild": "npm run build"
+  },
   "dependencies": {
     "express": "^4.16.3",
     "md5": "^2.2.1",
@@ -37,6 +37,7 @@
     "bower-webpack-plugin": "^0.1.9",
     "chalk": "^2.0.1",
     "chromedriver": "^2.27.2",
+    "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
@@ -75,7 +76,8 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "workbox-webpack-plugin": "^3.0.0"
   },
   "engines": {
     "node": ">= 6.0.0",

@@ -10,7 +10,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-// const BowerWebpackPlugin = require("bower-webpack-plugin");
+const WorkboxPlugin = require('workbox-webpack-plugin')
+const CleanPlugin = require('clean-webpack-plugin')
+
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -77,7 +79,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
     }),
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
@@ -122,8 +124,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     ]),
 
-    // new BowerWebpackPlugin()
-  ]
+    new WorkboxPlugin.InjectManifest({
+      swSrc: './src/sw.js',
+      swDest: 'sw.js',
+      importWorkboxFrom: 'local',
+    })]
 })
 
 if (config.build.productionGzip) {

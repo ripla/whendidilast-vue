@@ -5,7 +5,7 @@
       <div v-bind:key="item.id + '3'">{{item.description}}</div>
       <button
         v-bind:key="item.id + '4'"
-        v-on:click="handleClick(item.id)">I did this!</button>
+        v-on:click="handleClick(item.id)">Mark as done!</button>
       <button
         class="remove"
         v-bind:key="item.id + '5'"
