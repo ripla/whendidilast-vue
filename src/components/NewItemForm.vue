@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <h2>Thing I did:</h2>
-    <form v-on:submit.prevent="handleSubmit">
-      <input
-        aria-label="New item"
-        placeholder="New Item"
-        type="text"
+  <div id="newItemForm">
+    <span>Thing I did:</span>
+      <vaadin-text-field
+        placeholder="Item Description"
         v-bind:value="newValue"
-        v-on:change="handleChange" />
-      <input type="submit" value="Add" />
-    </form>
+        v-on:input="handleChange"
+        v-on:keydown="handleKeyDown"
+        ref="itemDescription"
+         />
+      <vaadin-button
+        aria-label="Create new"
+        v-on:click="handleSubmit"
+        theme="primary">
+        <iron-icon icon="lumo:plus"></iron-icon>
+      </vaadin-button>
   </div>
 </template>
 
@@ -26,14 +30,23 @@ export default {
       this.newValue = event.target.value;
     },
 
+    handleKeyDown(event) {
+      if (event.key === 'Enter') {
+        this.handleSubmit();
+      }
+    },
+
     handleSubmit() {
       this.$emit('newThing', { newValue: this.newValue });
       this.newValue = '';
+      this.$refs.itemDescription.blur();
     },
   },
 };
 </script>
 
 <style scoped>
-
+#newItemForm {
+  padding: var(--lumo-space-wide-m);
+}
 </style>

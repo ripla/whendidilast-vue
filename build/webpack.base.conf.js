@@ -32,6 +32,10 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
+    modules: [
+      './node_modules',
+      './bower_components',
+    ],
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
@@ -74,6 +78,18 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.html$/,
+        // This is an example of chained loaders in Webpack.
+        // Chained loaders run last to first. So it will run
+        // polymer-webpack-loader, and hand the output to
+        // babel-loader. This let's us transpile JS in our `<script>` elements.
+        use: [
+          { loader: 'babel-loader' },
+          { loader: 'polymer-webpack-loader' }
+        ],
+        include: [resolve('bower_components')],
       },
     ]
   },

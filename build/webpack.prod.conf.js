@@ -70,7 +70,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         ? 'index.html'
         : config.build.index,
       template: 'index.html',
-      inject: true,
+      inject: false,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -123,6 +123,14 @@ const webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
+
+    // This plugin will copy files over for us without transforming them.
+    // That's important because the custom-elements-es5-adapter.js MUST
+    // remain in ES2015.
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../bower_components/webcomponentsjs/*.js'),
+      to: config.build.assetsSubDirectory,
+    }]),
 
     new WorkboxPlugin.InjectManifest({
       swSrc: './src/sw.js',

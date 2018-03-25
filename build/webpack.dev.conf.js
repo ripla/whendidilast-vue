@@ -55,7 +55,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true,
+      inject: false,
       serviceWorker: false,
     }),
     // copy custom static assets
@@ -65,7 +65,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    // This plugin will copy files over for us without transforming them.
+    // That's important because the custom-elements-es5-adapter.js MUST
+    // remain in ES2015.
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../bower_components/webcomponentsjs/*.js'),
+      to: config.dev.assetsSubDirectory
+    }])
   ]
 })
 

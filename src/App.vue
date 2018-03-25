@@ -12,6 +12,7 @@ import ItemList from './components/ItemList';
 import TitleView from './components/TitleView';
 import NewItemForm from './components/NewItemForm';
 
+
 export default {
   name: 'App',
   components: {
@@ -79,9 +80,6 @@ export default {
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+
 }
 </style>
