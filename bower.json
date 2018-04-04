@@ -17,6 +17,10 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.5.0",
+    "vaadin-grid": "simple-column",
     "vaadin": "^10.0.0-beta3"
+  },
+  "resolutions": {
+    "vaadin-grid": "simple-column"
   }
 }
