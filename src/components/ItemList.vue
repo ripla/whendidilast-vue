@@ -6,7 +6,7 @@
     <div class="header">Remove</div>
     <template v-for="item in sortedItems">
       <div v-bind:key="item.id + '3'">{{item.description}}</div>
-      <div v-bind:key="item.id + '2'" v-bind:title="item.date">{{humaniseDate(item.date)}}</div>
+      <div v-bind:key="item.id + '2'" v-bind:title="formatDate(item.date)">{{humaniseDate(item.date)}}</div>
       <div v-bind:key="item.id + '4'" class="button-wrapper">
         <vaadin-button
           aria-label="Mark as done"
@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import moment from 'moment';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import dateFormat from 'date-fns/format';
 
 export default {
   name: 'ItemList',
@@ -50,8 +51,12 @@ export default {
     },
 
     humaniseDate(date) {
-      return moment(date, 'YYYY-MM-DD').fromNow();
+      return distanceInWordsToNow(date, { addSuffix: true });
     },
+
+    formatDate(date) {
+      return dateFormat(date, 'YYYY-MM-DD HH:mm');
+    }
   },
 };
 </script>

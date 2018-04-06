@@ -16,9 +16,9 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
     "express": "^4.16.3",
     "md5": "^2.2.1",
-    "moment": "^2.22.0",
     "vue": "^2.5.2"
   },
   "devDependencies": {

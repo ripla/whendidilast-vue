@@ -71,15 +71,7 @@ export default {
     },
 
     getCurrentDate() {
-      function pad(number) {
-        if (number < 10) {
-          return `0${number}`;
-        }
-        return number;
-      }
-
-      const today = new Date();
-      return `${today.getUTCFullYear()}-${pad(today.getUTCMonth() + 1)}-${pad(today.getUTCDate())}`;
+      return new Date().toISOString();
     },
   },
 };
