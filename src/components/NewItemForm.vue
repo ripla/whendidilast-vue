@@ -1,19 +1,19 @@
 <template>
   <div id="newItemForm">
     <span>Thing I did:</span>
-      <vaadin-text-field
-        placeholder="Item Description"
-        v-bind:value="newValue"
-        v-on:input="handleChange"
-        v-on:keydown="handleKeyDown"
-        ref="itemDescription"
-         />
-      <vaadin-button
-        aria-label="Create new"
-        v-on:click="handleSubmit"
-        theme="primary">
-        <iron-icon icon="lumo:plus"></iron-icon>
-      </vaadin-button>
+    <vaadin-text-field
+      placeholder="description"
+      v-bind:value="newValue"
+      v-on:input="handleChange"
+      v-on:keydown="handleKeyDown"
+      ref="itemDescription"
+        />
+    <vaadin-button
+      aria-label="Create new"
+      v-on:click="handleSubmit"
+      theme="primary icon">
+      <iron-icon icon="lumo:plus"></iron-icon>
+    </vaadin-button>
   </div>
 </template>
 
@@ -47,6 +47,13 @@ export default {
 
 <style scoped>
 #newItemForm {
-  padding: var(--lumo-space-wide-m);
+  margin: var(--lumo-space-wide-m);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#newItemForm span {
+  margin-right: 0.5em;
 }
 </style>
