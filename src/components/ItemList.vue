@@ -1,12 +1,12 @@
 <template>
   <div class="grid-wrapper">
-    <div class="header">Date when done</div>
     <div class="header">What did I do</div>
+    <div class="header">When did I do it</div>
     <div class="header">Mark as done</div>
-    <div class="header">Remove item</div>
+    <div class="header">Remove</div>
     <template v-for="item in sortedItems">
-      <div v-bind:key="item.id + '2'">{{item.date}}</div>
       <div v-bind:key="item.id + '3'">{{item.description}}</div>
+      <div v-bind:key="item.id + '2'" v-bind:title="item.date">{{humaniseDate(item.date)}}</div>
       <div v-bind:key="item.id + '4'" class="button-wrapper">
         <vaadin-button
           aria-label="Mark as done"
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   name: 'ItemList',
   props: ['items'],
@@ -46,11 +48,10 @@ export default {
     handleRemove(id) {
       this.$emit('remove', { id });
     },
-  },
-  mounted() {
-    // console.log(this.$refs.grid);
-    // console.log(this.items);
-    // this.$refs.grid.items = this.items;
+
+    humaniseDate(date) {
+      return moment(date, 'YYYY-MM-DD').fromNow();
+    },
   },
 };
 </script>

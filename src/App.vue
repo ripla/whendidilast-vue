@@ -2,7 +2,11 @@
   <div id="app">
     <title-view></title-view>
     <new-item-form v-on:newThing="handleNewThing"></new-item-form>
-    <item-list v-bind:items="items" v-on:done="handleDone" v-on:remove="handleRemove"></item-list>
+    <item-list
+      v-bind:items="items"
+      v-on:done="handleDone"
+      v-on:remove="handleRemove">
+    </item-list>
   </div>
 </template>
 
@@ -63,7 +67,7 @@ export default {
     handleRemove(event) {
       const clickedItem = this.items.find(item => item.id === event.id);
       this.items.splice(this.items.indexOf(clickedItem), 1);
-            showNotification(`Removed item <i>${clickedItem.description}</i>`);
+      showNotification(`Removed item <i>${clickedItem.description}</i>`);
     },
 
     getCurrentDate() {
