@@ -1,15 +1,29 @@
 <template>
   <div class="grid-wrapper">
+    <div class="header">Date when done</div>
+    <div class="header">What did I do</div>
+    <div class="header">Mark as done</div>
+    <div class="header">Remove item</div>
     <template v-for="item in sortedItems">
       <div v-bind:key="item.id + '2'">{{item.date}}</div>
       <div v-bind:key="item.id + '3'">{{item.description}}</div>
-      <button
-        v-bind:key="item.id + '4'"
-        v-on:click="handleClick(item.id)">Mark as done!</button>
-      <button
-        class="remove"
-        v-bind:key="item.id + '5'"
-        v-on:click="handleRemove(item.id)">X</button>
+      <div v-bind:key="item.id + '4'" class="button-wrapper">
+        <vaadin-button
+          aria-label="Mark as done"
+          theme="primary icon success"
+          
+          v-on:click="handleClick(item.id)">
+            <iron-icon icon="lumo:checkmark"></iron-icon>
+        </vaadin-button>
+      </div>
+      <div v-bind:key="item.id + '5'" class="button-wrapper">
+        <vaadin-button
+          aria-label="Mark as done"
+          theme="primary icon error"
+          v-on:click="handleRemove(item.id)">
+            <iron-icon icon="lumo:cross"></iron-icon>
+        </vaadin-button>
+      </div>
     </template>
   </div>
 </template>
@@ -45,12 +59,25 @@ export default {
 <style scoped>
   .grid-wrapper {
     display: grid;
-    grid-template-columns: minmax(50px, 1fr) 2fr 1fr 1fr;
-    grid-gap: 5px;
+    grid-template-columns: minmax(50px, 1fr) minmax(50px, 1fr) auto auto;
+    grid-column-gap: var(--lumo-size-m);
+
+    margin: var(--lumo-space-wide-m);
   }
 
-  button.remove {
+  .header {
+    font-size: var(--lumo-font-size-l);
+    font-weight: bold;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  button, vaadin-button {
     width: fit-content;
+
   }
 
 </style>
