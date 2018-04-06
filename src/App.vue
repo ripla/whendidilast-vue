@@ -11,7 +11,7 @@ import md5 from 'md5';
 import ItemList from './components/ItemList';
 import TitleView from './components/TitleView';
 import NewItemForm from './components/NewItemForm';
-
+import showNotification from './showNotification';
 
 export default {
   name: 'App',
@@ -56,11 +56,14 @@ export default {
       const newThing = { id: newThingId, date: newThingDate, description: newThingDescription };
 
       this.items.push(newThing);
+
+      showNotification(`Added item <i>${newThingDescription}</i>`);
     },
 
     handleRemove(event) {
       const clickedItem = this.items.find(item => item.id === event.id);
       this.items.splice(this.items.indexOf(clickedItem), 1);
+            showNotification(`Removed item <i>${clickedItem.description}</i>`);
     },
 
     getCurrentDate() {

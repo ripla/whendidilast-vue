@@ -39,7 +39,7 @@ export default {
     handleSubmit() {
       this.$emit('newThing', { newValue: this.newValue });
       this.newValue = '';
-      this.$refs.itemDescription.blur();
+      // this.$refs.itemDescription.blur();
     },
   },
 };

@@ -11,7 +11,6 @@
         <vaadin-button
           aria-label="Mark as done"
           theme="primary icon success"
-          
           v-on:click="handleClick(item.id)">
             <iron-icon icon="lumo:checkmark"></iron-icon>
         </vaadin-button>
