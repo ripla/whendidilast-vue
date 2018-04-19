@@ -6,7 +6,11 @@
     <div class="header">Remove</div>
     <template v-for="item in sortedItems">
       <div v-bind:key="item.id + '3'">{{item.description}}</div>
-      <div v-bind:key="item.id + '2'" v-bind:title="formatDate(item.date)">{{humaniseDate(item.date)}}</div>
+      <div
+        v-bind:key="item.id + '2'"
+        v-bind:title="formatDate(item.date)">
+          {{humaniseDate(item.date)}}
+      </div>
       <div v-bind:key="item.id + '4'" class="button-wrapper">
         <vaadin-button
           aria-label="Mark as done"
@@ -56,7 +60,7 @@ export default {
 
     formatDate(date) {
       return dateFormat(date, 'YYYY-MM-DD HH:mm');
-    }
+    },
   },
 };
 </script>

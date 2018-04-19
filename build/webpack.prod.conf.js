@@ -13,7 +13,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const CleanPlugin = require('clean-webpack-plugin')
 
-
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')
@@ -81,6 +80,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
     }),
+
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
@@ -136,7 +136,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       swSrc: './src/sw.js',
       swDest: 'sw.js',
       importWorkboxFrom: 'local',
-    })]
+    })
+  ],
 })
 
 if (config.build.productionGzip) {
