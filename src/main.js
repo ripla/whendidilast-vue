@@ -6,18 +6,20 @@ import Vue from 'vue';
 import App from './App';
 
 // import all web components in a single location
-require('../bower_components/iron-icon/iron-icon.html');
+// require('@polymer/iron-icon');
 
-require('../bower_components/vaadin-button/vaadin-button.html');
-require('../bower_components/vaadin-text-field/vaadin-text-field.html');
-require('../bower_components/vaadin-notification/vaadin-notification.html');
 
-require('../bower_components/vaadin-lumo-styles/color.html');
-require('../bower_components/vaadin-lumo-styles/sizing.html');
-require('../bower_components/vaadin-lumo-styles/spacing.html');
-require('../bower_components/vaadin-lumo-styles/style.html');
-require('../bower_components/vaadin-lumo-styles/typography.html');
-require('../bower_components/vaadin-lumo-styles/icons.html');
+require('@vaadin/vaadin-button');
+require('@vaadin/vaadin-text-field');
+require('@vaadin/vaadin-notification');
+
+require('@vaadin/vaadin-lumo-styles/color');
+require('@vaadin/vaadin-lumo-styles/sizing');
+require('@vaadin/vaadin-lumo-styles/spacing');
+require('@vaadin/vaadin-lumo-styles/style');
+require('@vaadin/vaadin-lumo-styles/typography');
+require('@vaadin/vaadin-lumo-styles/icons');
+
 
 Vue.config.productionTip = false;
 

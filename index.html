@@ -34,14 +34,14 @@
         ceShimContainer.parentElement.removeChild(ceShimContainer);
       }
     </script>
-    <script type="text/javascript" src="static/bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script type="text/javascript" src="static/custom-elements-es5-adapter.js"></script>
   </div>
 
   <!--
       Use the webcomponents-loader script which will feature detect which Web
       Components features are missing and lazy load the appropriate polyfills.
       When we hear the 'WebComponentsReady' event from the polyfill bundle we can
-      insert our 'bundle.js'.
+      insert our JS files.
     -->
   <script>
     (function () {
@@ -57,7 +57,7 @@
       }, false);
     })();
   </script>
-  <script src="static/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="static/webcomponents-loader.js"></script>
 
   <custom-style>
     <style include="lumo-color lumo-typography"></style>

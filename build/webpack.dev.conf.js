@@ -71,8 +71,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // That's important because the custom-elements-es5-adapter.js MUST
     // remain in ES2015.
     new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, '../bower_components/webcomponentsjs/*.js'),
-      to: config.dev.assetsSubDirectory
+      from: path.resolve(__dirname, '../node_modules/@webcomponents/webcomponentsjs/*.js'),
+      to: config.dev.assetsSubDirectory,
+      flatten: true,
     }])
   ]
 })

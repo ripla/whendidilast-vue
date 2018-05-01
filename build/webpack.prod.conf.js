@@ -128,8 +128,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     // That's important because the custom-elements-es5-adapter.js MUST
     // remain in ES2015.
     new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, '../bower_components/webcomponentsjs/*.js'),
+      from: path.resolve(__dirname, '../node_modules/@webcomponents/webcomponentsjs/*.js'),
       to: config.build.assetsSubDirectory,
+      flatten: true,
     }]),
 
     new WorkboxPlugin.InjectManifest({
